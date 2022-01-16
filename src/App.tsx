@@ -1,25 +1,40 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <HashRouter>
+        <Navbar bg="light" expand="lg">
+          <Container>
+            <Navbar.Brand href="#/" onClick={() => {}}>
+              Template
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <NavDropdown title="Examples" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="#/page-a">Page A</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="page-a" element={<PageA />} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 }
 
+function Homepage() {
+  return <div>This is the home page!</div>;
+}
+
+function PageA() {
+  return <div>This is the Page A.</div>;
+}
 export default App;
